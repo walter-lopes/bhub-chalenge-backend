@@ -11,7 +11,9 @@ Abaixo mostrarei alguns padrões escritos em c#, que tornam esse problema mais f
 Quando enfrentamos uma aplicação onde temos um número muito grande de regras de negócio, nosso primeiro pensamento deve ser, como desacoplar e separar a responsabilidade
 para contextos que fazem sentido.
 Basicamente a maneira mais fácil de resolver esse problema é implementando várias tomadas de decisões de acordo com que a demanda venha. Porém usando esse mecanismo
-nosso código ficará totalmente acoplado, dificil de ter uma boa leitura, manutenção e testabildade. Jamais faça algo do tipo
+nosso código ficará totalmente acoplado, dificil de ter uma boa leitura, manutenção e testabildade.
+
+Exemplo de código que pode se tornar um Big Ball of Mud
 
 ```
 switch (payment.PaymentType)
@@ -32,7 +34,7 @@ Como falado a anteriomente, para esse tipo de problmea precisamosa de desacoplam
 e mais fácil de testar/manter. Usando práticas como Dependency Injectio e Abstrações conseguimos alcançar um bom nível de código para nossa aplicação.
 
 
-# Dependency Injection
+# Domain Service & Dependency Injection
 
 Podemos deixar a responsabilidade por determinar qual classe de negócio ser instanciada pelo nosso DI, usando uma estrategia chamada Conditional Dependency Injection.
 
