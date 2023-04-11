@@ -4,8 +4,9 @@ namespace BHub.Challenge.Backend;
 
 public class BookPaymentBusinessRule : IPaymentBusinessRule
 {
-    public Task ExecuteAsync(Payment payment)
+    public async Task ExecuteAsync(Payment payment)
     {
-        throw new NotImplementedException();
+        // Running Book Payment Business Rule
+        await Task.CompletedTask;
     }
 }

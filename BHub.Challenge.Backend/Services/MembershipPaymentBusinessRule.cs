@@ -6,6 +6,7 @@ public class MembershipPaymentBusinessRule : IPaymentBusinessRule
 {
     public Task ExecuteAsync(Payment payment)
     {
+        // Running Membership Payment Business Rule
         throw new NotImplementedException();
     }
 }
