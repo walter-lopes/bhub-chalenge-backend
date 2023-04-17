@@ -24,10 +24,10 @@
       <None Update="appsettings.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Plugins\BookPaymentPlugin.dll">
+      <None Update="Plugins\PhysicalProductPaymentPlugin.dll">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Plugins\PhysicalProductPaymentPlugin.dll">
+      <None Update="Plugins\BookPaymentPlugin.dll">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>

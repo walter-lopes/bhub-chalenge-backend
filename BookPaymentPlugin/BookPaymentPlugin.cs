@@ -10,6 +10,6 @@ public class BookPaymentPlugin : IPlugin
         /// <summary> Execute </summary>
         public void DoAction()
         {
-            Console.WriteLine("I`m BookPayment Plugin.");
+            Console.WriteLine("Retrieving current book payment and running the business rule..");
         }
 }

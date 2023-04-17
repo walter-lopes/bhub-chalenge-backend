@@ -10,6 +10,6 @@ public class PhysicalProductPaymentPlugin : IPlugin
     /// <summary> Execute </summary>
     public void DoAction()
     {
-        Console.WriteLine("I`m PhysicalProductPayment Plugin.");
+        Console.WriteLine("Retrieving current Physical Product Payment and running the business rule..");
     }
 }
