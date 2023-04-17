@@ -1,22 +1,16 @@
-﻿using BHub.Challenge.Backend;
-using BHub.Challenge.Backend.Domain;
-using Microsoft.Extensions.DependencyInjection;
+﻿using BHub.Challenge.Backend.Main;
 
-
-var serviceCollection = new ServiceCollection();
-serviceCollection.AddPaymentBusinessRules();
-var provider = serviceCollection.BuildServiceProvider();
-
-var payment = new Payment
+/// <summary>
+/// Entry Class
+/// </summary>
+class Program
 {
-    PaymentType = PaymentType.Book
-};
-await PostPayment(payment);
-
-async Task PostPayment(Payment payment)
-{
-    var service = provider.GetService<Func<PaymentType, IPaymentBusinessRule>>();
-
-    var businessRule = service?.Invoke(payment.PaymentType);
-    await businessRule?.ExecuteAsync(payment)!;
+    /// <summary>
+    /// Program entry point.
+    /// </summary>
+    /// <param name="args">arguments</param>
+    static void Main(string[] args)
+    {
+        new SamplePluginMain().Execute();
+    }
 }

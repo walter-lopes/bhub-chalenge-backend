@@ -2,6 +2,12 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BHub.Challenge.Backend", "BHub.Challenge.Backend\BHub.Challenge.Backend.csproj", "{7FB38D79-6179-4FC6-B1CB-7F1DCB5DD88C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookPaymentPlugin", "BookPaymentPlugin\BookPaymentPlugin.csproj", "{8F77A520-8E20-479D-9A25-F74A162810D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhysicalProductPaymentPlugin", "PhysicalProductPaymentPlugin\PhysicalProductPaymentPlugin.csproj", "{6C727960-2E8F-451A-A270-BCDA5C54840E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginComponent", "PluginComponent\PluginComponent.csproj", "{B5F06D62-301C-480C-ADFF-8CBB17211776}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +18,17 @@ Global
 		{7FB38D79-6179-4FC6-B1CB-7F1DCB5DD88C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FB38D79-6179-4FC6-B1CB-7F1DCB5DD88C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FB38D79-6179-4FC6-B1CB-7F1DCB5DD88C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F77A520-8E20-479D-9A25-F74A162810D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F77A520-8E20-479D-9A25-F74A162810D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F77A520-8E20-479D-9A25-F74A162810D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F77A520-8E20-479D-9A25-F74A162810D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C727960-2E8F-451A-A270-BCDA5C54840E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C727960-2E8F-451A-A270-BCDA5C54840E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C727960-2E8F-451A-A270-BCDA5C54840E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C727960-2E8F-451A-A270-BCDA5C54840E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5F06D62-301C-480C-ADFF-8CBB17211776}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5F06D62-301C-480C-ADFF-8CBB17211776}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5F06D62-301C-480C-ADFF-8CBB17211776}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5F06D62-301C-480C-ADFF-8CBB17211776}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
