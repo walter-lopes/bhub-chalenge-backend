@@ -8,7 +8,7 @@ Abaixo mostrarei alguns padrões escritos em c#, que tornam esse problema mais f
 ## Arquitetura de plugins pode nos ajudar a tornar regras de negócios flexiveis.
 
 
-Primeiramente com o primeiro feedback feito pelo Gustavo, onde minha solução não resolvia o problema de solicitar sempre um novo deploy a cada atualização feita no sistema. Ao realizar alguns estudos verifiquei que de fato não era a melhor solução e encontrei a arquitetura baseada em plugins para nos ajudar.
+Primeiramente com o primeiro feedback feito pelo Gustavo, onde minha solução não resolvia o problema de solicitar sempre um novo deploy a cada atualização feita no sistema. Verifiquei que de fato não era a melhor solução, então fui em busca de algo que trouxesse flexibidade e fosse extensivo, acabei encontrando a arquitetura baseada em plugins que abaixo explicarei como funciona e como pode ajudar.
 
 A arquitetura baseada em plugins é um estilo de arquitetura de software em que um sistema é projetado para ser estendido ou personalizado por meio de plugins, que são módulos de código que podem ser adicionados ou removidos dinamicamente para adicionar ou modificar funcionalidades do sistema. Existem várias vantagens em usar uma arquitetura baseada em plugins, aqui algumas vantagens:
 
