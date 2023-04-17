@@ -5,121 +5,27 @@ complexas e que mudam o tempo todo.
 Abaixo mostrarei alguns padrões escritos em c#, que tornam esse problema mais fácil de resolver. Isso pode ser aplicado em qualquer linguagem, foque no conceito.
 
 
-## O que fazer quando temos muitas regras de negócio?
+## Arquitetura de plugins pode nos ajudar a tornar regras de negócios flexiveis.
 
 
-Quando enfrentamos uma aplicação onde temos um número muito grande de regras de negócio, nosso primeiro pensamento deve ser, como desacoplar e separar a responsabilidade
-para contextos que fazem sentido.
-Basicamente a maneira mais fácil de resolver esse problema é implementando várias tomadas de decisões de acordo com que a demanda venha. Porém usando esse mecanismo
-nosso código ficará totalmente acoplado, dificil de ter uma boa leitura, manutenção e testabildade.
+A arquitetura baseada em plugins é um estilo de arquitetura de software em que um sistema é projetado para ser estendido ou personalizado por meio de plugins, que são módulos de código que podem ser adicionados ou removidos dinamicamente para adicionar ou modificar funcionalidades do sistema. Existem várias vantagens em usar uma arquitetura baseada em plugins, aqui algumas vantagens:
 
-Exemplo de código que pode se tornar um Big Ball of Mud
+- A arquitetura baseada em plugins permite que o software seja dividido em módulos independentes e isolados, o que facilita a manutenção e a evolução do sistema. Cada plugin pode ser desenvolvido e testado de forma separada, sem afetar o funcionamento dos outros plugins ou do sistema como um todo. Isso torna o software mais modular e flexível, permitindo que as mudanças sejam feitas em partes específicas do sistema sem afetar o funcionamento geral.
 
-```
-switch (payment.PaymentType)
-    {
-        case PaymentType.Book:
-            // Do something
-            break;
-        case PaymentType.Membership:
-            // Do something
-            break;
-        case PaymentType.Upgrade:
-            // Do something
-            break;
-    }
-```
+- Uma das principais vantagens da arquitetura baseada em plugins é a capacidade de adicionar novas funcionalidades ao sistema sem a necessidade de modificar o código existente. Os plugins podem ser desenvolvidos e adicionados ou removidos do sistema de forma independente, sem a necessidade de recompilar ou reiniciar o software. Isso permite que novas funcionalidades sejam facilmente incorporadas ao sistema sem interromper a operação do software em produção.
 
-Como falado a anteriomente, para esse tipo de problmea precisamosa de desacoplamento e resposabilidade única. Nosso foco é deixar o código mais entendivel possivel
-e mais fácil de testar/manter. Usando práticas como Dependency Injectio e Abstrações conseguimos alcançar um bom nível de código para nossa aplicação.
-
-
-# Domain Service & Dependency Injection
-
-Podemos deixar a responsabilidade por determinar qual classe de negócio ser instanciada pelo nosso DI, usando uma estrategia chamada Conditional Dependency Injection.
-
-```
-
-        services.AddTransient<Func<PaymentType, IPaymentBusinessRule>>(serviceProvider => key =>
-        {
-            return key switch
-            {
-                PaymentType.Book => serviceProvider.GetService<BookPaymentBusinessRule>(),
-                PaymentType.Membership => serviceProvider.GetService<MembershipPaymentBusinessRule>(),
-                PaymentType.Upgrade => serviceProvider.GetService<UpgradePaymentBusinessRule>(),
-                PaymentType.PhysicalProduct => serviceProvider.GetService<PhysicalProductBusinessRule>(),
-                _ => throw new Exception("Concrete class doesn't exist.")
-            };
-        });
-```
-
-Dessa maneira conseguimos evitar os multiplos if's em nosso fluxo de negócio, deixando essa responsabilidade para uma camada de IoC.
-
-Por fim o código no fluxo de negócio ficaria nesse estilo
-
-```
-var serviceCollection = new ServiceCollection();
-serviceCollection.AddPaymentBusinessRules();
-var provider = serviceCollection.BuildServiceProvider();
-
-var payment = new Payment
-{
-    PaymentType = PaymentType.Book
-};
-await PostPayment(payment);
-
-async Task PostPayment(Payment payment)
-{
-    var service = provider.GetService<Func<PaymentType, IPaymentBusinessRule>>();
-
-    var businessRule = service?.Invoke(payment.PaymentType);
-    await businessRule?.ExecuteAsync(payment)!;
-}
-
-```
-
-# Facilitade nos testes
-
-Usando essa maneira, conseguiremos testar nossa aplicação de uma forma muito mais eficaz! Já que criamos uma classe de business rules para cada comando, isso nos permite realizar testes distintos de cada regra de negócio. 
-
-## Teste se o pagamento for um upgrade para uma associação,
-```
-
-    [Test]
-    public void Should_Send_Activation_Email()
-    {
-        //Arrange
-        var businessRule = new MembershipPaymentBusinessRule();
-        var payment = new Payment() {PaymentType = PaymentType.Membership};
-        
-        //Act
-        businessRule.ExecuteAsync(payment);
-        
-        //Asserts
-    }
-
-```
-
-## Teste se o pagamento for para um livro, crie uma guia de remessa duplicada para o
-departamento de royalties.
-
-```
-
-    [Test]
-    public void Should_Generate_Duplicated_Delivery_Note_To_Royalties_Staff()
-    {
-        //Arrange
-        var businessRule = new PhysicalProductBusinessRule();
-        var payment = new Payment() {PaymentType = PaymentType.Book};
-        
-        //Act
-        businessRule.ExecuteAsync(payment);
-        
-        //Asserts
-    }
-
-```
- # Conclusão
+ - Com a arquitetura baseada em plugins, a atualização de funcionalidades do sistema pode ser mais fácil e menos arriscada. Os plugins podem ser atualizados de forma independente, sem a necessidade de atualizar todo o sistema. Isso permite que as atualizações sejam aplicadas com mais rapidez e facilidade, minimizando o risco de interrupção do sistema.
  
+ ## Como utilizar?
  
- Essa estratégia faz com que nosso código seja totalmente escalavel e de fácil manutenção, já que sabemos onde está cada componente de negócio.
+ Nesse exemplo em C#, os plugins são baseados em DLLs. Para adicionar ou alterar um plugin, basta acessarmos o caminho dos plugins na aplicação e copiar e colar a nova dll gerada.
+ 
+ Exemplo: 
+ ```
+ Copiar DLL do plugin gerada e colar no caminho dos plugins da aplicação.
+ 
+/Users/waltercardoso/Documents/projects/bhub/BHub.Challenge.Backend/BHub.Challenge.Backend/bin/Debug/net7.0/Plugins
+```
+
+
+
