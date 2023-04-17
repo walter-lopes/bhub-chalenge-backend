@@ -18,12 +18,28 @@ A arquitetura baseada em plugins é um estilo de arquitetura de software em que 
  
  ## Como utilizar?
  
- Nesse exemplo em C#, os plugins são baseados em DLLs. Para adicionar ou alterar um plugin, basta acessarmos o caminho dos plugins na aplicação e copiar e colar a nova dll gerada.
  
- Exemplo: 
+ Primeiro para exemplicar criei duas class libraries chamadas de BookPaymentPlugin e PhysicalProductPaymentPlugin respectivamente, onde iremos implementar/alterar nossas regras de negócio conforme demanda. Para isso basta criar uma classe concreta que implementa a interface IPlugin.
+ 
  ```
- Copiar DLL do plugin gerada e colar no caminho dos plugins da aplicação.
+public class BookPaymentPlugin : IPlugin
+{
+        /// <summary> Plugin Name </summary>
+        public string Name { get; } = "BookPayment";
+        
+        /// <summary> Execute </summary>
+        public void DoAction()
+        {
+            Console.WriteLine("Retrieving current book payment and running the business rule.");
+        }
+}
+```
+
+Toda classe que implementa o IPlugin deve ter o método DoAction, que será sempre chamado uma vez que o plugin for criado.
  
+Nesse exemplo em C#, os plugins são baseados em DLLs. Para adicionar ou alterar um plugin, basta acessarmos o caminho dos plugins na aplicação e copiar e colar a nova dll gerada.
+ Copiar DLL do plugin gerada e colar no caminho dos plugins da aplicação.
+ ```
 /Users/waltercardoso/Documents/projects/bhub/BHub.Challenge.Backend/BHub.Challenge.Backend/bin/Debug/net7.0/Plugins
 ```
 
