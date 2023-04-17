@@ -43,5 +43,5 @@ Nesse exemplo em C#, os plugins são baseados em DLLs. Para adicionar ou alterar
 /Users/waltercardoso/Documents/projects/bhub/BHub.Challenge.Backend/BHub.Challenge.Backend/bin/Debug/net7.0/Plugins
 ```
 
-
+Isso fará com que o novo plugin adicionado ou atualizado, comece a rodar sem precisarmos de um novo na aplicação, trazendo flexibidade e facilidade para o time de desenvolvimento.
 
