@@ -51,5 +51,6 @@ Isso fará com que o novo plugin adicionado ou atualizado, comece a rodar sem pr
 ### Referências
 
 https://github.com/weikio/PluginFramework
+
 https://youtu.be/iCE1bDoit9Q
 
