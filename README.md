@@ -40,7 +40,7 @@ Toda classe que implementa o IPlugin deve ter o método DoAction, que será semp
 Nesse exemplo em C#, os plugins são baseados em DLLs. Para adicionar ou alterar um plugin, basta acessarmos o caminho dos plugins na aplicação e copiar e colar a nova dll gerada.
  Copiar DLL do plugin gerada e colar no caminho dos plugins da aplicação.
  ```
-/Users/waltercardoso/Documents/projects/bhub/BHub.Challenge.Backend/BHub.Challenge.Backend/bin/Debug/net7.0/Plugins
+/caminho-da-app/Plugins
 ```
 
 Isso fará com que o novo plugin adicionado ou atualizado, comece a rodar sem precisarmos de um novo na aplicação, trazendo flexibidade e facilidade para o time de desenvolvimento.
