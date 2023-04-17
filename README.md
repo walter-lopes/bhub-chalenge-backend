@@ -46,7 +46,7 @@ Nesse exemplo em C#, os plugins são baseados em DLLs. Para adicionar ou alterar
 ```
 
 Isso fará com que o novo plugin adicionado ou atualizado, comece a rodar sem precisarmos de um novo na aplicação, trazendo flexibidade e facilidade para o time de desenvolvimento.
-
+No exemplo dado do problema , cada plugin pode recuperar os novos pagamentos e se for do tipo do plugin realizar as devidas regras de negócio.
 
 ### Referências
 
